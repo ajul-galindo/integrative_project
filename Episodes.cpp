@@ -37,11 +37,11 @@ int Episodes::getSeason() {
 void Episodes::displayInfo() {
     cout<<"ID: "<<id<<" Name: "<<name<<" Length: "<<length<<" Genre: "<<genre;
     if (votes>0) {
-        cout<<" Rating: "<< averageRating()<<endl;
+        cout<<" Rating: "<< averageRating();
     }else {
-        cout<<" No rating"<<endl;
+        cout<<" No rating";
     }
-    cout<<"Episode: "<<title<<" Season: "<<season<<endl;
+    cout<<" Episode: "<<title<<" Season: "<<season<<endl;
 }
 
 
