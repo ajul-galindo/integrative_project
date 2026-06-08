@@ -15,68 +15,90 @@ int main() {
     int episodesSize = 0;
     int totalSize = 0;
     int count = 0;
+    int decision; //para que el usuario elija que hacer en el menú
 
     moviesSize = countMoviesLines(MOVIES_FILE);
     episodesSize = countEpisodesLines(SERIES_FILE);
 
-    if (moviesSize == -1 && episodesSize == -1) {
-        cerr<<"Files could not be loaded"<<endl;
-        return 0;
-    } else {
-        cout<<"Files can be loaded"<<endl;
-    }
+    do {
+        cout<<"Menu"<<endl;
+        cout<<"1. Load files"<<endl;
+        cout<<"2. Show data"<<endl;
+        cout<<"3. Show videos with a certain rating/genre"<<endl;
+        cout<<"4. Show episodes from a certain series with a certain rating"<<endl;
+        cout<<"5. Show movies with a certain rating"<<endl;
+        cout<<"6. Rate a video"<<endl;
+        cout<<"0. Exit"<<endl;
 
-    totalSize = moviesSize + episodesSize;
+        cin>>decision;
 
-    moviesArray = new(nothrow) Movies[moviesSize];
-    episodesArray = new(nothrow) Episodes[episodesSize];
+        switch (decision) {
+            case 1:
+                if (moviesSize == -1 && episodesSize == -1) {
+                    cerr<<"Files could not be loaded"<<endl;
+                    return 0;
+                }else {
+                    cout<<"Files can be loaded"<<endl;
+                }
+                totalSize = moviesSize + episodesSize;
 
-    if (!moviesArray || !episodesArray) {
-        cout<<"Could not create arrays"<<endl;
-        delete [] moviesArray;
-        delete [] episodesArray;
-        return 1;
-    }
+                moviesArray = new(nothrow) Movies[moviesSize];
+                episodesArray = new(nothrow) Episodes[episodesSize];
 
-    if (!loadMovies("movies.csv", moviesArray, moviesSize)) {
-        cerr<<"Could not load movies file"<<endl;
-        delete[] moviesArray;
-        return 1;
-    }
+                if (!moviesArray || !episodesArray) {
+                    cout<<"Could not create arrays"<<endl;
+                    delete [] moviesArray;
+                    delete [] episodesArray;
+                    return 1;
+                }
 
-    if (!loadEpisodes("seriesfile.csv", episodesArray, episodesSize)) { //
-        cerr<<"Could not load episodes file"<<endl;
-        delete [] episodesArray;
-        return 1;
-    }
+                if (!loadMovies("movies.csv", moviesArray, moviesSize)) {
+                    cerr<<"Could not load movies file"<<endl;
+                    delete[] moviesArray;
+                    return 1;
+                }
 
-    videosArray = new(nothrow) Video *[totalSize];
-    if (!videosArray) {
-        cout<<"Could not create videos array"<<endl;
-        delete [] moviesArray;
-        delete [] episodesArray;
-        return 1;
-    }
+                if (!loadEpisodes("seriesfile.csv", episodesArray, episodesSize)) { //
+                    cerr<<"Could not load episodes file"<<endl;
+                    delete [] episodesArray;
+                    return 1;
+                }
 
-    for (unsigned int i = 0; i < totalSize; i++) {
-        videosArray[i] = nullptr;
-    }
+                videosArray = new(nothrow) Video *[totalSize];
+                if (!videosArray) {
+                    cout<<"Could not create videos array"<<endl;
+                    delete [] moviesArray;
+                    delete [] episodesArray;
+                    return 1;
+                }
 
-    for (unsigned int i = 0; i < moviesSize; i++) {
-        videosArray[count] = &moviesArray[i];
-        count++;
-    }
+                for (unsigned int i = 0; i < totalSize; i++) {
+                    videosArray[i] = nullptr;
+                }
 
-    for (unsigned int i = 0; i < episodesSize; i++) {
-        videosArray[count] = &episodesArray[i];
-        count++;
-    }
+                for (unsigned int i = 0; i < moviesSize; i++) {
+                    videosArray[count] = &moviesArray[i];
+                    count++;
+                }
 
-    for (unsigned int i = 0; i < totalSize; i++) {
-        if (videosArray[i]) {
-            videosArray[i] -> displayInfo();
+                for (unsigned int i = 0; i < episodesSize; i++) {
+                    videosArray[count] = &episodesArray[i];
+                    count++;
+                }
+
+                break;
+            case 2:
+                for (unsigned int i = 0; i < totalSize; i++) {
+                    if (videosArray[i]) {
+                        videosArray[i] -> displayInfo();
+                    }
+                }
+                break;
+            case 3:
+
+                break;
         }
-    }
+    }while (decision != 0);
 
     delete [] moviesArray;
     moviesArray = nullptr;
