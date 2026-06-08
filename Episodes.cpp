@@ -101,9 +101,6 @@ bool loadEpisodes(string fileName, Episodes *episodeArray, unsigned int arraySiz
             campo++;
         }
 
-        // Comparar si son el mismo numero de campos, aqui depende de cuantas
-        // entradas tiene cada clase, el número esta definido en el h
-        // como EPISODES_SIZE
         if (errores || campo != EPISODES_SIZE) {
             cerr << "Error en la line:\n" << line << endl;
             file.close();

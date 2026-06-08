@@ -5,8 +5,6 @@ using namespace std;
 #define MOVIES_FILE "movies.csv"
 #define SERIES_FILE "seriesfile.csv"
 
-//hacer dos archivos y cargarlos al mismo arreglo
-
 int main() {
     Video **videosArray = nullptr;
     Movies *moviesArray = nullptr;
@@ -15,7 +13,7 @@ int main() {
     int episodesSize = 0;
     int totalSize = 0;
     int count = 0;
-    int decision; //para que el usuario elija que hacer en el menú
+    int decision;
 
     moviesSize = countMoviesLines(MOVIES_FILE);
     episodesSize = countEpisodesLines(SERIES_FILE);
@@ -95,9 +93,14 @@ int main() {
                 }
                 break;
             case 3:
+
                 break;
         }
     }while (decision != 0);
+
+    for (unsigned int i = 0; i < totalSize; i++) {
+        delete videosArray[i];
+    }
 
     delete [] moviesArray;
     moviesArray = nullptr;

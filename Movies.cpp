@@ -33,7 +33,7 @@ bool loadMovies(string fileName, Movies *movieArray, unsigned int arraySize) {
         return false;
     }
 
-    // Saltar el encabezado //que pasa si no hay encabezado? se salta la primera linea?
+    // Saltar el encabezado, que pasa si no hay encabezado? se salta la primera linea?
     if(!getline(file, line)) {
         cerr << "File does not have header" << endl;
         file.close();
@@ -72,9 +72,7 @@ bool loadMovies(string fileName, Movies *movieArray, unsigned int arraySize) {
             campo++;
         }
 
-        // Comparar si son el mismo numero de campos, aqui depende de cuantas
-        // entradas tiene cada clase, el número esta definido en el h
-        // como MOVIES_SIZE
+
         if (errores || campo != MOVIES_SIZE) {
             cerr << "Error en la line:\n" << line << endl;
             file.close();
