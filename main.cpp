@@ -34,15 +34,6 @@ int main() {
         switch (decision) {
             case 1:
 
-                if (videosArray) {
-                    delete [] moviesArray;
-                    delete [] episodesArray;
-                    delete [] moviesArray;
-                    moviesArray = nullptr;
-                    episodesArray = nullptr;
-                    moviesArray = nullptr;
-                }
-
                 if (moviesSize == -1 && episodesSize == -1) {
                     cerr<<"Files could not be loaded"<<endl;
                     return 0;
@@ -114,7 +105,7 @@ int main() {
                     cin>>findGenre;
 
                     for (unsigned int i = 0; i < totalSize; i++) {
-                        if (videosArray[i]) {  //revisar que si haya algo ahí
+                        if (videosArray[i]) {  //revisar que si haya algo ahí y si no pues nada
                             if (videosArray[i] -> getGenre() == findGenre) {
                                 videosArray[i] -> displayInfo();
                             }
@@ -162,15 +153,20 @@ int main() {
         }
     }while (decision != 0);
 
-    for (unsigned int i = 0; i < totalSize; i++) {
-        delete videosArray[i];
+    if (moviesArray) {
+        delete [] moviesArray;
+        moviesArray = nullptr;
     }
 
-    delete [] moviesArray;
-    moviesArray = nullptr;
-    delete [] episodesArray;
-    episodesArray = nullptr;
-    delete[] videosArray;
-    videosArray = nullptr;
+    if (videosArray) {
+        delete [] videosArray;
+        videosArray = nullptr;
+    }
+
+    if (episodesArray) {
+        delete [] episodesArray;
+        episodesArray = nullptr;
+    }
+
     return 0;
 }
