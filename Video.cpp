@@ -58,7 +58,7 @@ int Video::getLength() {
     return this -> length;
 }
 
-void Video:: rate(int rating) {
+void Video:: rate(float rating) {
     if (rating >= 1 && rating <= 5) {    //intentar usar un do while
         addRatings += rating;
         votes++;

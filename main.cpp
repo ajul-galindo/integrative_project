@@ -2,6 +2,7 @@
 using namespace std;
 #include "Episodes.h"
 #include "Movies.h"
+#include <typeinfo>
 #define MOVIES_FILE "movies.csv"
 #define SERIES_FILE "seriesfile.csv"
 
@@ -93,17 +94,56 @@ int main() {
                 }
                 break;
             case 3:
+                float findRating;
+                string findGenre;
+                string option;
+                cout<<"Choose an option (g for genre / r for rating)"<<endl;
+                cin>>option;
+                if (option == "g" || option == "G") {
+                    cout<<"Enter a genre: "<<endl;
+                    cin>>findGenre;
+
+                    for (unsigned int i = 0; i < totalSize; i++) {
+                        if (videosArray[i]) {  //revisar que si haya algo ahí
+                            if (videosArray[i] -> getGenre() == findGenre) {
+                                videosArray[i] -> displayInfo();
+                            }
+                        }
+                    }
+
+                }
+                if (option == "r" || option == "R") {
+                    cout<<"Enter a rating (from 1 to 5): "<<endl;
+                    cin>>findRating;
+                    for (unsigned int i = 0; i < totalSize; i++) {
+                        if (videosArray[i]) {  //revisar que si haya algo ahí
+                            if (videosArray[i] -> averageRating() == findRating) {
+                                videosArray[i] -> displayInfo();
+                            }
+                        }
+                    }
+                }
+                break;
+            /*case 4:
+                string Series;
+                float epRating;
+                cout<<"Enter the series name: "<<endl;
+                cin>>Series;
+                cout<<"Enter the rating"<<endl;
+                cin>>epRating;
+                for (unsigned int i = 0; i < totalSize; i++) {
+                    if (videosArray) {
+                        if (videosArray[i] -> getName() == Series &&)
+                    }
+                }
 
                 break;
-            case 4:
-
-                break;
-            case 5:
+            /*case 5:
 
                 break;
             case 6:
 
-                break;
+                break;*/
         }
     }while (decision != 0);
 

@@ -33,7 +33,7 @@ public:
     void setLength(int length);
     int getLength();
 
-    void rate(int rating);
+    void rate(float rating);
     float averageRating();
 
 };
