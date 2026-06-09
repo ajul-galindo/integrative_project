@@ -135,11 +135,9 @@ int main() {
                 cout<<"Enter the rating"<<endl;
                 cin>>epRating;
                 for (unsigned int i = 0; i < totalSize; i++) {
-                    if (videosArray[i]) {
-                        if (typeid(*videosArray[i]) == typeid(Episodes)) {
+                    if (videosArray[i] && typeid(*videosArray[i]) == typeid(Episodes)) {
                             if (videosArray[i] -> getName() == Series && videosArray[i] -> averageRating() == epRating) {
                                 videosArray[i] -> displayInfo();
-                            }
                         }
                     }
                 }
@@ -155,19 +153,22 @@ int main() {
                 cout<<"Enter the rating"<<endl;
                 cin>>mRating;
                 for (unsigned int i = 0; i < totalSize; i++) {
-                    if (videosArray[i]) {
-                        if (typeid(*videosArray[i]) == typeid(Movies)) {
+                    if (videosArray[i] && typeid(*videosArray[i]) == typeid(Movies)) {
                             if (videosArray[i] -> averageRating() == mRating) {
                                 videosArray[i] -> displayInfo();
-                            }
                         }
                     }
                 }
                 break;
             }
-            case 6:
+            case 6: {
+                float newRating;
+                string vidToRate;
+
+
 
                 break;
+            }
         }
     }while (decision != 0);
 
