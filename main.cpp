@@ -164,9 +164,21 @@ int main() {
             case 6: {
                 float newRating;
                 string vidToRate;
+                cout<<"Enter the video you want to rate: "<<endl;
+                cin.ignore();
+                getline(cin, vidToRate);
+                for (unsigned int i = 0; i < totalSize; i++) {
+                    if (videosArray[i] && videosArray[i] -> getName() == vidToRate) {
+                        cout<<"Video found, current rating is: "<<videosArray[i]->averageRating()<<endl;
+                        do {
+                            cout<<"Enter the new rating: "<<endl;
+                            cin>>newRating;
+                        } while (newRating < 1 && newRating > 5);
 
-
-
+                        videosArray[i] -> rate(newRating);
+                        cout<<"The new rating is: "<<videosArray[i]->averageRating()<<endl;
+                    }
+                }
                 break;
             }
         }
