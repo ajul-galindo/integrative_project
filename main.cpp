@@ -118,7 +118,7 @@ int main() {
                     cin>>findRating;
                     for (unsigned int i = 0; i < totalSize; i++) {
                         if (videosArray[i]) {  //revisar que si haya algo ahí
-                            if (videosArray[i] -> averageRating() == findRating) {
+                            if (videosArray[i] -> getRating() == findRating) {
                                 videosArray[i] -> displayInfo();
                             }
                         }
@@ -136,7 +136,7 @@ int main() {
                 cin>>epRating;
                 for (unsigned int i = 0; i < totalSize; i++) {
                     if (videosArray[i] && typeid(*videosArray[i]) == typeid(Episodes)) {
-                            if (videosArray[i] -> getName() == Series && videosArray[i] -> averageRating() == epRating) {
+                            if (videosArray[i] -> getName() == Series && videosArray[i] -> getRating() == epRating) {
                                 videosArray[i] -> displayInfo();
                         }
                     }
@@ -150,7 +150,7 @@ int main() {
                 cin>>mRating;
                 for (unsigned int i = 0; i < totalSize; i++) {
                     if (videosArray[i] && typeid(*videosArray[i]) == typeid(Movies)) {
-                            if (videosArray[i] -> averageRating() == mRating) {
+                            if (videosArray[i] -> getRating() == mRating) {
                                 videosArray[i] -> displayInfo();
                         }
                     }
@@ -165,14 +165,14 @@ int main() {
                 getline(cin, vidToRate);
                 for (unsigned int i = 0; i < totalSize; i++) {
                     if (videosArray[i] && videosArray[i] -> getName() == vidToRate) {
-                        cout<<"Video found, current rating is: "<<videosArray[i]->averageRating()<<endl;
+                        cout<<"Video found, current rating is: "<<videosArray[i] -> getRating()<<endl;
                         do {
                             cout<<"Enter the new rating: "<<endl;
                             cin>>newRating;
                         } while (newRating < 1 && newRating > 5);
 
-                        videosArray[i] -> rate(newRating);
-                        cout<<"The new rating is: "<<videosArray[i]->averageRating()<<endl;
+                        videosArray[i] -> setRating(newRating);
+                        cout<<"The new rating is: "<<videosArray[i]->getRating()<<endl;
                     }
                 }
                 break;

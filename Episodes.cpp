@@ -13,7 +13,7 @@ Episodes::Episodes() : Video(){
     this -> season = 0;
 }
 
-Episodes::Episodes(string id, string name, string genre, float length, float rating, string title, int season):Video(id,name,genre,length) {
+Episodes::Episodes(string id, string name, string genre, float length, float rating, string title, int season):Video(id,name,genre,length, rating) {
     this -> title = title;
     this -> season = season;
 }
@@ -36,8 +36,8 @@ int Episodes::getSeason() {
 
 void Episodes::displayInfo() {
     cout<<"ID: "<<id<<" Name: "<<name<<" Length: "<<length<<" Genre: "<<genre;
-    if (votes>0) {
-        cout<<" Rating: "<< averageRating();
+    if (rating) {
+        cout<<" Rating: "<< getRating();
     }else {
         cout<<" No rating";
     }

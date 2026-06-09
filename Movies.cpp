@@ -11,13 +11,13 @@ using namespace std;
 Movies::Movies() : Video() {
 }
 
-Movies::Movies(string id, string name, string genre, int length, float rating):Video(id,name,genre,length) {
+Movies::Movies(string id, string name, string genre, int length, float rating):Video(id,name,genre,length, rating) {
 }
 
 void Movies::displayInfo() {
     cout<<"ID: "<<id<<" Name: "<<name<<" Length: "<<length<<" Genre: "<<genre;
-    if (votes>0) {
-        cout<<" Rating: "<< averageRating()<<endl;
+    if (rating) {
+        cout<<" Rating: "<< getRating()<<endl;
     }else {
         cout<<" No rating"<<endl;
     }

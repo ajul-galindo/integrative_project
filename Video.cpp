@@ -11,17 +11,15 @@ Video::Video() {
     genre = "NA";
     name = "NA";
     id = "NA";
-    addRatings = 0.0;
-    votes = 0;
+    rating = 0.0;
 }
 
-Video::Video(std::string id, std::string name, std::string genre, int length) {
+Video::Video(std::string id, std::string name, std::string genre, int length, float rating) {
     this -> length = length;
     this -> name = name;
     this -> genre = genre;
     this -> id = id;
-    addRatings = 0.0; //ver si se puede dejar fuera
-    votes = 0;
+    this -> rating = rating;
 }
 
 Video::~Video() {}
@@ -58,21 +56,11 @@ int Video::getLength() {
     return this -> length;
 }
 
-void Video:: rate(float rating) {
-    if (rating >= 1 && rating <= 5) {    //intentar usar un do while
-        addRatings += rating;
-        votes++;
-    }else {
-        cout<<"Invalid rating"<<endl;
-    }
+void Video::setRating(float rating) {
+    this -> rating = rating;
 }
 
-float Video::averageRating() {
-    if (votes == 0) {
-        return 0.0;
-        cout<<"Invalid";
-    }
-    return addRatings / votes;
+float Video::getRating() {
+    return this -> rating;
 }
-
 

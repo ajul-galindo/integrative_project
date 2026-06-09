@@ -12,12 +12,11 @@ protected:
     std::string name;
     std::string genre;
     int length;
-    float addRatings;
-    int votes;
+    float rating;
 
 public:
     Video();
-    Video(std::string id, std::string name, std::string genre, int length);
+    Video(std::string id, std::string name, std::string genre, int length, float rating);
     virtual void displayInfo() = 0;
     virtual ~Video();
 
@@ -33,9 +32,8 @@ public:
     void setLength(int length);
     int getLength();
 
-    void rate(float rating);
-    float averageRating();
-
+    void setRating(float rating);
+    float getRating();
 };
 
 
