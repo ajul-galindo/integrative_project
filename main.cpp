@@ -145,11 +145,7 @@ int main() {
                 break;
             }
             case 5: {
-                string Movie;
                 float mRating;
-                cin.ignore();
-                cout<<"Enter movie name"<<endl;
-                getline(cin, Movie);
                 cout<<"Enter the rating"<<endl;
                 cin>>mRating;
                 for (unsigned int i = 0; i < totalSize; i++) {
