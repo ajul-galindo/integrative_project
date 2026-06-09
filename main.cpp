@@ -102,7 +102,8 @@ int main() {
                 cin>>option;
                 if (option == "g" || option == "G") {
                     cout<<"Enter a genre: "<<endl;
-                    cin>>findGenre;
+                    cin.ignore();
+                    getline(cin, findGenre);
 
                     for (unsigned int i = 0; i < totalSize; i++) {
                         if (videosArray[i]) {  //revisar que si haya algo ahí y si no pues nada
