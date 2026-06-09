@@ -146,9 +146,27 @@ int main() {
 
                 break;
             }
-            case 5:
+            case 5: {
+                string Movie;
+                float mRating;
+                cin.ignore();
+                cout<<"Enter movie name"<<endl;
+                getline(cin, Movie);
+                cout<<"Enter the rating"<<endl;
+                cin>>mRating;
+                for (unsigned int i = 0; i < totalSize; i++) {
+                    if (videosArray[i]) {
+                        if (typeid(*videosArray[i]) == typeid(Movies)) {
+                            if (videosArray[i] -> averageRating() == mRating) {
+                                videosArray[i] -> displayInfo();
+                            }
+                        }
+                    }
+                }
                 break;
+            }
             case 6:
+
                 break;
         }
     }while (decision != 0);
