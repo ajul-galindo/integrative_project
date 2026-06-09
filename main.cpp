@@ -34,12 +34,24 @@ int main() {
         switch (decision) {
             case 1:
 
+                if (videosArray) {
+                    delete [] moviesArray;
+                    moviesArray = nullptr;
+                    delete [] episodesArray;
+                    episodesArray = nullptr;
+                    delete [] videosArray;
+                    videosArray = nullptr;
+                }
+
                 if (moviesSize == -1 && episodesSize == -1) {
                     cerr<<"Files could not be loaded"<<endl;
                     return 0;
                 }else {
                     cout<<"Files can be loaded"<<endl;
                 }
+
+                count = 0;
+
                 totalSize = moviesSize + episodesSize;
 
                 moviesArray = new(nothrow) Movies[moviesSize];
@@ -170,7 +182,7 @@ int main() {
                         do {
                             cout<<"Enter the new rating: "<<endl;
                             cin>>newRating;
-                        } while (newRating < 1 && newRating > 5);
+                        } while (newRating < 1 || newRating > 5);
 
                         videosArray[i] -> setRating(newRating);
                         cout<<"The new rating is: "<<videosArray[i]->getRating()<<endl;
