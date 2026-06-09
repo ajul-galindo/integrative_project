@@ -33,6 +33,16 @@ int main() {
 
         switch (decision) {
             case 1:
+
+                if (videosArray) {
+                    delete [] moviesArray;
+                    delete [] episodesArray;
+                    delete [] moviesArray;
+                    moviesArray = nullptr;
+                    episodesArray = nullptr;
+                    moviesArray = nullptr;
+                }
+
                 if (moviesSize == -1 && episodesSize == -1) {
                     cerr<<"Files could not be loaded"<<endl;
                     return 0;
@@ -93,7 +103,7 @@ int main() {
                     }
                 }
                 break;
-            case 3:
+            case 3: {
                 float findRating;
                 string findGenre;
                 string option;
@@ -124,26 +134,31 @@ int main() {
                     }
                 }
                 break;
-            /*case 4:
+            }
+            case 4: {
                 string Series;
                 float epRating;
+                cin.ignore();
                 cout<<"Enter the series name: "<<endl;
-                cin>>Series;
+                getline(cin, Series);
                 cout<<"Enter the rating"<<endl;
                 cin>>epRating;
                 for (unsigned int i = 0; i < totalSize; i++) {
-                    if (videosArray) {
-                        if (videosArray[i] -> getName() == Series &&)
+                    if (videosArray[i]) {
+                        if (typeid(*videosArray[i]) == typeid(Episodes)) {
+                            if (videosArray[i] -> getName() == Series && videosArray[i] -> averageRating() == epRating) {
+                                videosArray[i] -> displayInfo();
+                            }
+                        }
                     }
                 }
 
                 break;
-            /*case 5:
-
+            }
+            case 5:
                 break;
             case 6:
-
-                break;*/
+                break;
         }
     }while (decision != 0);
 
